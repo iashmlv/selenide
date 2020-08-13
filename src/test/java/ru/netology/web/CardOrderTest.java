@@ -20,10 +20,10 @@ public class CardOrderTest {
 
         Calendar calendar = Calendar.getInstance();
         calendar.add(Calendar.DAY_OF_MONTH, 5);
-        SimpleDateFormat rusDateFormat = new SimpleDateFormat("dd.MM.yyyy");
-        String dateMeeting = rusDateFormat.format(calendar.getTime());
+        SimpleDateFormat customDateFormat = new SimpleDateFormat("dd.MM.yyyy");
+        String dateMeeting = customDateFormat.format(calendar.getTime());
         SelenideElement dateElement = $("[data-test-id=date] input[class=input__control]");
-        dateElement.sendKeys("\b\b\b\b\b\b\b\b\b\b");
+        dateElement.sendKeys("\b\b\b\b\b\b\b\b");
         dateElement.setValue(dateMeeting);
 
         $("[data-test-id=name] input").setValue("Иван Шумилов");
