@@ -2,8 +2,11 @@ package ru.netology.web;
 
 import com.codeborne.selenide.SelenideElement;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.Keys;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 
 import static com.codeborne.selenide.Condition.exactText;
@@ -18,12 +21,9 @@ public class CardOrderTest {
         open("http://localhost:9999");
         $("[data-test-id='city'] input").setValue("Ростов-на-Дону");
 
-        Calendar calendar = Calendar.getInstance();
-        calendar.add(Calendar.DAY_OF_MONTH, 5);
-        SimpleDateFormat customDateFormat = new SimpleDateFormat("dd.MM.yyyy");
-        String dateMeeting = customDateFormat.format(calendar.getTime());
         SelenideElement dateElement = $("[data-test-id=date] input[class=input__control]");
         dateElement.sendKeys("\b\b\b\b\b\b\b\b");
+        String dateMeeting = LocalDate.now().plusDays(7).format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
         dateElement.setValue(dateMeeting);
 
         $("[data-test-id=name] input").setValue("Иван Шумилов");
