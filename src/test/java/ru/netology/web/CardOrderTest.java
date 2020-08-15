@@ -4,10 +4,9 @@ import com.codeborne.selenide.SelenideElement;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Keys;
 
-import java.text.SimpleDateFormat;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
 
 import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Condition.visible;
@@ -22,7 +21,7 @@ public class CardOrderTest {
         $("[data-test-id='city'] input").setValue("Ростов-на-Дону");
 
         SelenideElement dateElement = $("[data-test-id=date] input[class=input__control]");
-        dateElement.sendKeys("\b\b\b\b\b\b\b\b");
+        dateElement.sendKeys((Keys.chord(Keys.CONTROL+"a")+Keys.DELETE));
         String dateMeeting = LocalDate.now().plusDays(7).format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
         dateElement.setValue(dateMeeting);
 
