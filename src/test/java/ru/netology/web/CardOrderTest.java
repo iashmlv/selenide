@@ -21,7 +21,7 @@ public class CardOrderTest {
         $("[data-test-id='city'] input").setValue("Ростов-на-Дону");
 
         SelenideElement dateElement = $("[data-test-id=date] input[class=input__control]");
-        dateElement.sendKeys((Keys.chord(Keys.CONTROL+"a")+Keys.DELETE));
+        dateElement.doubleClick().sendKeys(Keys.BACK_SPACE);
         String dateMeeting = LocalDate.now().plusDays(7).format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
         dateElement.setValue(dateMeeting);
 
